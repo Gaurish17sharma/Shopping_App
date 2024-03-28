@@ -1,0 +1,19 @@
+.about{
+    display:flex;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.4);
+    margin:80px auto;
+    padding:0px 50px 50px 50px;
+    animation: fade-in-left 2s ease-in-out;
+  }
+
+  p{
+    font-size: 20px;
+    text-align: left;
+    gap: 5px;
+  }
+
+  .about h1{
+    text-decoration-line: underline;
+    text-align: center;
+  }
