@@ -1,4 +1,4 @@
-import './Home.css';
+import './Styling/Home.css';
 
 export default function Home({ setToProductMode }) {
 
@@ -16,5 +16,6 @@ export default function Home({ setToProductMode }) {
       </p>
       <button className='shop_now' onClick={setProductMode}>Shop Now</button>
     </div>
+    
   )
 }
