@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import './Styling/Head.css';
 import DropdownMenu from './DropdownMenu';
+import { NavLink } from 'react-router-dom';
 
-export default function Head({ setToProductMode, setToHomeMode, setToAboutMode }) {
-    const [isDropDownVisible, setDropDownVisible] = useState(false);
+export default function Head({ setToProductMode, setToHomeMode, setToAboutMode, categories }) {
 
     const setProductMode = () => {
         setToProductMode();
@@ -17,35 +17,28 @@ export default function Head({ setToProductMode, setToHomeMode, setToAboutMode }
         setToAboutMode();
     };
 
-    const handleMouseEnter = () => {
-        setDropDownVisible(true);
-    };
-
-    const handleMouseLeave = () => {
-        setDropDownVisible(false);
-    };
-
     return (
         <>
             <div className="header">
                 <h1>Regale Shop Store </h1>
-                <ul className ="navigation">
+                <ul className="navigation">
                     <li onClick={setHomeMode}>
                         Home
                     </li>
                     <li onClick={setProductMode}>
                         Products
                     </li>
-
-                    <div
-                        className="menu"
-                        onMouseEnter={handleMouseEnter}
-                        onMouseLeave={handleMouseLeave}
-                    >
-                        <li className='categoriesBtn'>Categories</li>
-                        
-                        {isDropDownVisible && <DropdownMenu />}
-                    </div>
+                    <li className="dropdown">
+                        <div className="categoriesBtn">Categories</div>
+                        <div className="dropdown-links">
+                            {categories &&
+                                categories.map((category) => (
+                                    <NavLink key={category} to={"categories/" + category}>
+                                        {category}
+                                    </NavLink>
+                                ))}
+                        </div>
+                    </li>
 
                     <li onClick={setAboutMode}>
                         About us
