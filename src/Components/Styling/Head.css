@@ -73,8 +73,41 @@
     width: auto;
   }
 
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  
+  }
+  
+  .dropdown-links {
+    display: none;
+    position: absolute;
+    padding-bottom: 10px;
+    border-radius: 10px;
+    background-color: rgba(28, 32, 44, 0.7);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+  
   .categoriesBtn:hover {
     cursor: pointer;
+  }
+  
+  .dropdown-links a {
+    color: white;
+    padding: 12px 16px;
+    margin: 0 10px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-links a.active {
+    border-bottom: 3px solid white;
+  }
+  
+  
+  .dropdown:hover .dropdown-links {
+    display: block;
   }
   
   
