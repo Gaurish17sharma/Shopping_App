@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import Board from "./Board";
+import './Styling/Product.css'
 
 export default function Product() {
-    const [product, setProduct] = useState();
+    const [products, setProduct] = useState();
 
     useEffect(() => {
         const getCartsData = async function () {
@@ -15,6 +16,7 @@ export default function Product() {
                 }
                 let result = await response.json();
                 setProduct(result);
+                console.log(result);
             }
             catch (error) {
                 console.log("Error on fetching data");
@@ -28,12 +30,12 @@ export default function Product() {
 
     return (
         <div className="products">
-            {product.map(product => 
-                <div className="product-cart" key={Product.id}>
+            {products?.map((product) => (
+                <div className="product-cart" key={product.id}>
                    <Board product = {product} />
                 </div>
 
-            )}
+            ))}
         </div>
         
     )
