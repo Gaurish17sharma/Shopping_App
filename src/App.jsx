@@ -25,7 +25,7 @@ function App() {
         setCategories(result);
       } catch (error) {
         setError(error);
-        console.log("Errore nel fetching data");
+        console.log("Error on fetching data");
         setCategories(null);
       } finally {
         setLoadingCategories(false);
