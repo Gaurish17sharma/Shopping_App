@@ -1,22 +1,24 @@
-import { useState , useEffect } from 'react'
-import './Styles/App.css';
-import Head from './Components/Head';
-import Home from './Components/Home';
-import Product from './Components/Product';
-import About from './Components/About';
+import { useState, useEffect } from "react";
+import "./Styles/App.css";
+import Head from "./Components/Head";
+import Home from "./Components/Home";
+import Product from "./Components/Product";
+import About from "./Components/About";
+import Cart from "./Components/Cart";
 
 function App() {
-  const [mode,setMode] = useState("home");
+  const [mode, setMode] = useState("home");
   const [categories, setCategories] = useState(null);
   const [loadingCategories, setLoadingCategories] = useState(true);
   const [error, setError] = useState(null);
-
+  const [currentCategory, setcurrentCategory] = useState("");
+  const [products, setProduct] = useState();
 
   useEffect(() => {
     const getCategories = async function () {
       try {
         let response = await fetch(
-          "https://fakestoreapi.com/products/categories"
+          "https://fakestoreapi.com/products/categories",
         );
         if (!response.ok) {
           throw new Error("Error in fetching data");
@@ -34,7 +36,7 @@ function App() {
 
     getCategories();
   }, []);
-   
+
   function setToProductMode() {
     setMode("product");
   }
@@ -47,24 +49,32 @@ function App() {
     setMode("about");
   }
 
+  function setToCartMode() {
+    setMode("cart")
+;  }
+
   return (
     <>
-      <Head setToProductMode={setToProductMode}
-            setToHomeMode={setToHomeMode}
-            setToAboutMode = {setToAboutMode}
-            categories = {categories}
-            />
+      <Head
+        setToProductMode={setToProductMode}
+        setToHomeMode={setToHomeMode}
+        setToAboutMode={setToAboutMode}
+        setToCartMode = {setToCartMode}
+        categories={categories}
+        changeCat={(val) => setcurrentCategory(val)}
+      />
 
       {mode == "home" ? (
-        <Home setToProductMode = {setToProductMode} />
+        <Home setToProductMode={setToProductMode} />
       ) : mode == "product" ? (
-        <Product />
-      ) : (
+        <Product products = {products} setProduct = {setProduct}/>
+      ) : mode =="about" ? (
         <About />
+      ) : (
+        <Cart />
       )}
     </>
-
-  )
+  );
 }
 
-export default App
+export default App;

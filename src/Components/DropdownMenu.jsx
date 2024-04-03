@@ -1,21 +1,20 @@
-import './Styling/DropdownMenu.css';
+import "./Styling/DropdownMenu.css";
 
-export default function DropdownMenu() {
-    return (
-        <div className="dropdown-menu">
-            <ul>
-                <li>Electronics</li>
-                <li>Jewelery</li>
-                <li>Men's Clothiing</li>
-                <li>Women's Clothing</li>
-            </ul>
-        </div>
-    )
+export default function DropdownMenu({ categories, changeCategory }) {
+  return (
+    <div className="dropdown-menu">
+      <ul>
+        {categories?.map((item) => (
+          <li
+            onClick={() => {
+              changeCategory(item);
+            }}
+            key={item}
+          >
+            {item}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
-
-
-
-
-
-
-

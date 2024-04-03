@@ -73,7 +73,7 @@
     width: auto;
   }
 
-  .dropdown {
+  .menu {
     position: relative;
     display: inline-block;
   
@@ -89,7 +89,7 @@
     z-index: 1;
   }
   
-  .categoriesBtn:hover {
+  .dropdown-btn:hover {
     cursor: pointer;
   }
   

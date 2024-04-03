@@ -1,10 +1,4 @@
-.menu {
-    position:relative;
-    display: inline-block;
-  
-  }
-  
-  .dropdown-menu {
+    .dropdown-menu {
     display: none;
     position: absolute;
     padding-bottom: 10px;
@@ -14,10 +8,6 @@
     z-index: 1;
   }
   
-  .menu:hover .dropdown-menu {
-    display: block;
-  }
-
   .dropdown-menu li{
     gap: 5px;
     font-size: 20px;

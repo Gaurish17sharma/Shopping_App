@@ -4,18 +4,20 @@ import DropdownMenu from './DropdownMenu';
 
 import { NavLink } from 'react-router-dom';
 
-export default function Head({ setToProductMode, setToHomeMode, setToAboutMode, categories }) {
+export default function Head({ setToProductMode, setToHomeMode, setToAboutMode, setToCartMode, categories, changeCat}) {
     const [isDropdownVisible, setDropdownVisible] = useState(false);
 
-  const handleMouseEnter = () => {
-    setDropdownVisible(true);
-  };
+    const handleMouseEnter = () => {
+        setDropdownVisible(true);
+    };
 
-  const handleMouseLeave = () => {
-    setDropdownVisible(false);
-  };
-    
+    const handleMouseLeave = () => {
+        setDropdownVisible(false);
+    };
 
+    const setCartMode = () =>{
+        setToCartMode();
+    }
 
     const setProductMode = () => {
         setToProductMode();
@@ -33,7 +35,7 @@ export default function Head({ setToProductMode, setToHomeMode, setToAboutMode, 
         <>
             <div className="header">
                 <h1>Regale Shop Store </h1>
-                <ul className ="navigation">
+                <ul className="navigation">
                     <li onClick={setHomeMode}>
                         Home
                     </li>
@@ -48,7 +50,7 @@ export default function Head({ setToProductMode, setToHomeMode, setToAboutMode, 
                     >
                         <button className='dropdown-btn'>Categories</button>
                         {/* <DropdownMenu /> */}
-                        {isDropdownVisible && <DropdownMenu />}
+                        {isDropdownVisible && (<DropdownMenu categories={categories} changeCategory={(val) => changeCat(val)}/>)}
                     </div>
 
                     <li onClick={setAboutMode}>
@@ -57,7 +59,7 @@ export default function Head({ setToProductMode, setToHomeMode, setToAboutMode, 
                 </ul>
                 <div className="cart-bar">
                     <button>
-                        <img className="cartIcon" src='shopping-cart (1).png' alt="" />
+                        <img className="cartIcon" onClick={setCartMode} src='shopping-cart (1).png' alt="" />
                     </button>
                 </div>
             </div>
