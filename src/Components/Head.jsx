@@ -1,18 +1,20 @@
 import { useState } from 'react';
 import './Styling/Head.css';
+import DropdownMenu from './DropdownMenu';
 
 import { NavLink } from 'react-router-dom';
 
 export default function Head({ setToProductMode, setToHomeMode, setToAboutMode, categories }) {
     const [isDropdownVisible, setDropdownVisible] = useState(false);
 
-    const handleMouseEnter = () => {
-      setDropdownVisible(true);
-    };
-  
-    const handleMouseLeave = () => {
-      setDropdownVisible(false);
-    };
+  const handleMouseEnter = () => {
+    setDropdownVisible(true);
+  };
+
+  const handleMouseLeave = () => {
+    setDropdownVisible(false);
+  };
+    
 
 
     const setProductMode = () => {
@@ -39,17 +41,15 @@ export default function Head({ setToProductMode, setToHomeMode, setToAboutMode, 
                         Products
                     </li>
 
-                    <li className="dropdown">
-                        <div className="categoriesBtn">Categories</div>
-                        <div className="dropdown-links">
-                            {categories &&
-                                categories.map((category) => (
-                                    <NavLink key={category} to={"categories/" + category}>
-                                        {category}
-                                    </NavLink>
-                                ))}
-                        </div>
-                    </li>
+                    <div
+                        className="menu"
+                        onMouseEnter={handleMouseEnter}
+                        onMouseLeave={handleMouseLeave}
+                    >
+                        <button className='dropdown-btn'>Categories</button>
+                        {/* <DropdownMenu /> */}
+                        {isDropdownVisible && <DropdownMenu />}
+                    </div>
 
                     <li onClick={setAboutMode}>
                         About us
