@@ -9,10 +9,50 @@ import Cart from "./Components/Cart";
 function App() {
   const [mode, setMode] = useState("home");
   const [categories, setCategories] = useState(null);
-  const [loadingCategories, setLoadingCategories] = useState(true);
-  const [error, setError] = useState(null);
   const [currentCategory, setcurrentCategory] = useState("");
   const [products, setProduct] = useState();
+  const [cart, setCart] = useState([]);
+
+  function addToCart(product, prd_count) {
+    let totalPrice = parseFloat((product.price * prd_count).toFixed(2));
+    let currentItemIndex = cart.findIndex(
+      (item) => item.title = product.title
+    )
+
+    if (currentItemIndex !== -1) {
+      let updatedCart = [...Cart];
+      updatedCart[currentItemIndex].prd_count = prd_count;
+      updatedCart[currentItemIndex].totalPrice = totalPrice;
+      setCart(updatedCart);
+    }
+    else {
+      setCart([...Cart,
+      {
+        id: product.id,
+        title: product.title,
+        price: product.price,
+        prd_count: prd_count,
+        totalPrice: totalPrice,
+        img: product.image,
+      },
+      ]);
+    }
+  }
+
+  function removeFromCart(cart, id) {
+    setCart(cart.filter((item) => id != item.id));
+  }
+
+  function updatedPrd_count(cart, id, event, itemPrice) {
+    newPrd_count = parseInt(event.target.value);
+    let updatedCart = cart.map((item) => item.id == id ? {
+      ...item,
+      prd_count: newPrd_count,
+      totalPrice: newPrd_count * itemPrice
+    } : item);
+    setCart(updatedCart);
+
+  }
 
   useEffect(() => {
     const getCategories = async function () {
@@ -26,11 +66,8 @@ function App() {
         let result = await response.json();
         setCategories(result);
       } catch (error) {
-        setError(error);
         console.log("Error on fetching data");
         setCategories(null);
-      } finally {
-        setLoadingCategories(false);
       }
     };
 
@@ -51,7 +88,8 @@ function App() {
 
   function setToCartMode() {
     setMode("cart")
-;  }
+      ;
+  }
 
   return (
     <>
@@ -59,19 +97,26 @@ function App() {
         setToProductMode={setToProductMode}
         setToHomeMode={setToHomeMode}
         setToAboutMode={setToAboutMode}
-        setToCartMode = {setToCartMode}
+        setToCartMode={setToCartMode}
         categories={categories}
         changeCat={(val) => setcurrentCategory(val)}
+        cart = {cart}
       />
 
       {mode == "home" ? (
         <Home setToProductMode={setToProductMode} />
       ) : mode == "product" ? (
-        <Product products = {products} setProduct = {setProduct}/>
-      ) : mode =="about" ? (
+        <Product products={products}
+          setProduct={setProduct}
+          addToCart={addToCart}
+        />
+      ) : mode == "about" ? (
         <About />
       ) : (
-        <Cart />
+        <Cart cart = {cart}
+          removeFromCart={removeFromCart}
+          updatedPrd_count={updatedPrd_count}
+        />
       )}
     </>
   );

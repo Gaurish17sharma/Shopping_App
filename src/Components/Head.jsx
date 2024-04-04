@@ -4,7 +4,14 @@ import DropdownMenu from './DropdownMenu';
 
 import { NavLink } from 'react-router-dom';
 
-export default function Head({ setToProductMode, setToHomeMode, setToAboutMode, setToCartMode, categories, changeCat}) {
+export default function Head({ setToProductMode,
+    setToHomeMode,
+    setToAboutMode,
+    setToCartMode,
+    categories, 
+    changeCat,
+    cart,
+}) {
     const [isDropdownVisible, setDropdownVisible] = useState(false);
 
     const handleMouseEnter = () => {
@@ -15,7 +22,7 @@ export default function Head({ setToProductMode, setToHomeMode, setToAboutMode, 
         setDropdownVisible(false);
     };
 
-    const setCartMode = () =>{
+    const setCartMode = () => {
         setToCartMode();
     }
 
@@ -49,8 +56,10 @@ export default function Head({ setToProductMode, setToHomeMode, setToAboutMode, 
                         onMouseLeave={handleMouseLeave}
                     >
                         <button className='dropdown-btn'>Categories</button>
-                        {/* <DropdownMenu /> */}
-                        {isDropdownVisible && (<DropdownMenu categories={categories} changeCategory={(val) => changeCat(val)}/>)}
+
+                        {isDropdownVisible &&
+                            (<DropdownMenu categories={categories}
+                                changeCategory={(val) => changeCat(val)} />)}
                     </div>
 
                     <li onClick={setAboutMode}>
@@ -60,6 +69,7 @@ export default function Head({ setToProductMode, setToHomeMode, setToAboutMode, 
                 <div className="cart-bar">
                     <button>
                         <img className="cartIcon" onClick={setCartMode} src='shopping-cart (1).png' alt="" />
+                        {cart?.length > 0 && <p className="cart-quantity">{cart.length}</p>}
                     </button>
                 </div>
             </div>

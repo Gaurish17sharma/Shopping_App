@@ -81,3 +81,7 @@
     color: white;
     background-color: rgb(11, 17, 43);
   }
+
+  .cart_button:hover{
+    cursor: pointer;
+  }

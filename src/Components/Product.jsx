@@ -2,9 +2,22 @@ import { useEffect, useState } from "react";
 import Board from "./Board";
 import './Styling/Product.css';
 
-export default function Product({ products, setProduct }) {
-    const [productClicked, SetProductClicked] = useState();
-    const [cartscore, setCartScore] = useState();
+export default function Product({ products, setProduct , addToCart }) {
+    const [productClicked, SetProductClicked] = useState([]);
+    const [cartscore, setCartScore] = useState(0);
+
+    function onCartClick (cartId){
+        if (productClicked.includes(cartId)){
+            setCartScore(0);
+            SetProductClicked([]);
+        }
+        else{
+            setCartScore(cartscore + 1);
+            SetProductClicked([...productClicked , cartId]);
+            setProduct(products);
+
+        }
+    }
 
 
     useEffect(() => {
@@ -37,7 +50,7 @@ export default function Product({ products, setProduct }) {
         <div className="products">
             {products?.map((product) => (
                 <div className="product-cart" key={product.id}>
-                    <Board product={product}
+                    <Board product={product} addToCart = {addToCart} onCartClick = {onCartClick}
                     />
                 </div>
 
