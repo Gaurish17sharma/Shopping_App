@@ -53,6 +53,10 @@
     height: 200px;
   }
 
+  .image_api{
+    max-height: 135px;
+  }
+
   .product-price {
     font-weight: bold;
     font-size: large;

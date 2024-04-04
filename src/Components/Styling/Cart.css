@@ -1,0 +1,127 @@
+.cart {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 50px;
+    text-align: center;
+}
+
+.cart-item {
+    width: 450px;
+    height: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.4);
+    padding: 40px;
+  }
+  
+  .cart-item button {
+    margin-bottom: 30px;
+    font-size: 15px;
+    font-weight: bold;
+    width: fit-content;
+    align-self: center;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(218, 59, 59);
+    color: white;
+  }
+  
+  .cart-item-info {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 20px;
+    height: 100px;
+    margin-bottom: 30px;
+  
+  }
+  
+  .cart-item-description {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .cart-item-description>p {
+    font-size: 0.9em;
+  }
+
+  .cart-item-input {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .cart-item input {
+    width: 50%;
+    margin: 0 auto 20px auto;
+    padding: 10px 0;
+    height: 20px;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 10px;
+  }
+  
+  .checkout-info p {
+    font-size: 40px;
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+  }
+  
+  .checkOut {
+    font-size: 20px;
+    padding: 10px;
+    background-color: rgb(35, 87, 35);
+    color: white;
+    border-radius: 10px;
+    font-weight: bold;
+    width: 100%;
+  }
+  
+  .checkOut:hover,
+  .cart-item button:hover {
+    cursor: pointer;
+  }
+
+  .empty-cart {
+    width: 100vw;
+    height: 100vh;
+    border: 1px solid;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .empty-cart button {
+    margin-top: 50px;
+    padding: 10px;
+    font-size: 1.5em;
+    background-color: rgb(11, 17, 43);
+    color: white;
+    border-radius: 10px;
+    border: 1px solid white;
+  }
+
+  .empty-cart button:hover {
+    cursor: pointer;
+  }
+
+  .empty-cart p {
+    font-size: 30px;
+    font-weight: bold;
+  }
+
+  .empty_cart {
+    height: 100px;
+    width: auto;
+  }
+
+  .item_img{
+    max-height: 135px;
+  }

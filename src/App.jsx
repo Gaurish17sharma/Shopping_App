@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import "./Styles/App.css";
+import { useState, useEffect } from "react";  
 import Head from "./Components/Head";
 import Home from "./Components/Home";
 import Product from "./Components/Product";
@@ -16,17 +15,17 @@ function App() {
   function addToCart(product, prd_count) {
     let totalPrice = parseFloat((product.price * prd_count).toFixed(2));
     let currentItemIndex = cart.findIndex(
-      (item) => item.title = product.title
+      (item) => item.title == product.title
     )
 
     if (currentItemIndex !== -1) {
-      let updatedCart = [...Cart];
+      let updatedCart = [...cart];
       updatedCart[currentItemIndex].prd_count = prd_count;
       updatedCart[currentItemIndex].totalPrice = totalPrice;
       setCart(updatedCart);
     }
     else {
-      setCart([...Cart,
+      setCart([...cart,
       {
         id: product.id,
         title: product.title,
@@ -44,7 +43,7 @@ function App() {
   }
 
   function updatedPrd_count(cart, id, event, itemPrice) {
-    newPrd_count = parseInt(event.target.value);
+    let newPrd_count = parseInt(event.target.value);
     let updatedCart = cart.map((item) => item.id == id ? {
       ...item,
       prd_count: newPrd_count,
@@ -116,6 +115,7 @@ function App() {
         <Cart cart = {cart}
           removeFromCart={removeFromCart}
           updatedPrd_count={updatedPrd_count}
+          setToProductMode={setToProductMode}
         />
       )}
     </>

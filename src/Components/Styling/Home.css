@@ -49,6 +49,7 @@
     color: white;
     border-radius: 10px;
     border: 1px solid white;
+    animation: fade-in-left 2s ease-in-out;
   }
 
   .home button:hover {

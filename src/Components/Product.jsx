@@ -15,7 +15,7 @@ export default function Product({ products, setProduct , addToCart }) {
             setCartScore(cartscore + 1);
             SetProductClicked([...productClicked , cartId]);
             setProduct(products);
-
+        
         }
     }
 
