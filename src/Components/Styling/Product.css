@@ -2,10 +2,18 @@
     justify-content: center;
     display: flex;
     flex-wrap: wrap;
+    flex-direction: row;
     gap: 20px;
     padding: 50px;
     text-align: center;
     animation: fade-in-left 3s ease-in-out;
+  }
+
+  .catt h1{
+    text-align: center;
+    text-decoration: underline;
+    font-style: italic;
+    font-size: 45px;
   }
 
   @keyframes fade-in-left {

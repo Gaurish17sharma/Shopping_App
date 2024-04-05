@@ -1,14 +1,16 @@
-import { useState, useEffect } from "react";  
+import { useState, useEffect } from "react";
 import Head from "./Components/Head";
 import Home from "./Components/Home";
 import Product from "./Components/Product";
 import About from "./Components/About";
 import Cart from "./Components/Cart";
+import Jewelery from "./Components/Categories/Jewelery";
+import Electronics from "./Components/Categories/Electronics";
+import Men from "./Components/Categories/Men";
+import Women from "./Components/Categories/Women";
 
 function App() {
   const [mode, setMode] = useState("home");
-  const [categories, setCategories] = useState(null);
-  const [currentCategory, setcurrentCategory] = useState("");
   const [products, setProduct] = useState();
   const [cart, setCart] = useState([]);
 
@@ -53,26 +55,6 @@ function App() {
 
   }
 
-  useEffect(() => {
-    const getCategories = async function () {
-      try {
-        let response = await fetch(
-          "https://fakestoreapi.com/products/categories",
-        );
-        if (!response.ok) {
-          throw new Error("Error in fetching data");
-        }
-        let result = await response.json();
-        setCategories(result);
-      } catch (error) {
-        console.log("Error on fetching data");
-        setCategories(null);
-      }
-    };
-
-    getCategories();
-  }, []);
-
   function setToProductMode() {
     setMode("product");
   }
@@ -90,6 +72,22 @@ function App() {
       ;
   }
 
+  function setToJewelMode() {
+    setMode("jewel");
+  }
+
+  function setToElecMode() {
+    setMode("elec");
+  }
+
+  function setToMenMode() {
+    setMode("men");
+  }
+
+  function setToWomenMode() {
+    setMode("women");
+  }
+
   return (
     <>
       <Head
@@ -97,9 +95,11 @@ function App() {
         setToHomeMode={setToHomeMode}
         setToAboutMode={setToAboutMode}
         setToCartMode={setToCartMode}
-        categories={categories}
-        changeCat={(val) => setcurrentCategory(val)}
-        cart = {cart}
+        cart={cart}
+        setToJewelMode={setToJewelMode}
+        setToElecMode={setToElecMode}
+        setToMenMode={setToMenMode}
+        setToWomenMode={setToWomenMode}
       />
 
       {mode == "home" ? (
@@ -111,12 +111,29 @@ function App() {
         />
       ) : mode == "about" ? (
         <About />
-      ) : (
-        <Cart cart = {cart}
+      ) : mode == "cart" ? (
+        <Cart cart={cart}
           removeFromCart={removeFromCart}
           updatedPrd_count={updatedPrd_count}
           setToProductMode={setToProductMode}
         />
+
+      ) : mode == "jewel" ? (
+        <Jewelery products={products}
+          setProduct={setProduct}
+          addToCart={addToCart} />
+      ) : mode == "elec" ? (
+        <Electronics products={products}
+          setProduct={setProduct}
+          addToCart={addToCart} />
+      ) : mode == "men" ? (
+        <Men products={products}
+          setProduct={setProduct}
+          addToCart={addToCart} />
+      ) : (
+        <Women products={products}
+          setProduct={setProduct}
+          addToCart={addToCart} />
       )}
     </>
   );

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import Board from "./Board";
-import './Styling/Product.css';
+import Board from "../Board";
+import '../Styling/Product.css';
 
-export default function Product({ products, setProduct, addToCart}) {
+export default function Electronics({ products, setProduct, addToCart }) {
     const [productClicked, SetProductClicked] = useState([]);
     const [cartscore, setCartScore] = useState(0);
 
@@ -15,17 +15,15 @@ export default function Product({ products, setProduct, addToCart}) {
             setCartScore(cartscore + 1);
             SetProductClicked([...productClicked, cartId]);
             setProduct(products);
-
         }
     }
-
 
     useEffect(() => {
         const getCartsData = async function () {
             let response;
             try {
                 response = await fetch(
-                    `https://fakestoreapi.com/products`
+                    `https://fakestoreapi.com/products/category/electronics`
                 );
 
                 if (!response.ok) {
@@ -46,15 +44,17 @@ export default function Product({ products, setProduct, addToCart}) {
     }, []);
 
     return (
+        <div className="catt">
+            <h1>Electronics</h1>
+            <div className="products">
+                {products?.map((product) => (
+                    <div className="product-cart" key={product.id}>
+                        <Board product={product} addToCart={addToCart} onCartClick={onCartClick}
+                        />
+                    </div>
 
-        <div className="products">
-            {products?.map((product) => (
-                <div className="product-cart" key={product.id}>
-                    <Board product={product} addToCart={addToCart} onCartClick={onCartClick}
-                    />
-                </div>
-
-            ))}
+                ))}
+            </div>
         </div>
 
     )

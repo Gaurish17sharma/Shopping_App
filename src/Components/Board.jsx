@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export default function Board({ product , addToCart , onCartClick}) {
+export default function Board({ product , addToCart }) {
     const [prd_count , setPrd_Count] = useState(1);
 
     const updatedPrd_count = (event) =>{

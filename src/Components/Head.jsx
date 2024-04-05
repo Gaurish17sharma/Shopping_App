@@ -1,27 +1,29 @@
-import { useState, useEffect} from 'react';
+import { useState } from 'react';
 import './Styling/Head.css';
-
-import { NavLink } from 'react-router-dom';
 
 export default function Head({ setToProductMode,
     setToHomeMode,
     setToAboutMode,
     setToCartMode,
-    categories,
-    changeCat,
     cart,
-    products,
-    setProduct,
+    setToJewelMode,
+    setToElecMode,
+    setToMenMode,
+    setToWomenMode,
 }) {
-    const [isDropdownVisible, setDropdownVisible] = useState(false);
 
-    const handleMouseEnter = () => {
-        setDropdownVisible(true);
-    };
-
-    const handleMouseLeave = () => {
-        setDropdownVisible(false);
-    };
+    const setJewelMode = () => {
+        setToJewelMode();
+    }
+    const setElecMode = () => {
+        setToElecMode();
+    }
+    const setMenMode = () => {
+        setToMenMode();
+    }
+    const setWomenMode = () => {
+        setToWomenMode();
+    }
 
     const setCartMode = () => {
         setToCartMode();
@@ -55,15 +57,10 @@ export default function Head({ setToProductMode,
                         <li className='dropdown-btn'>Categories</li>
                         <div className="dropdown-menu">
                             <ul>
-                                {categories?.map((item) => (
-                                    <li
-                                        onClick={() => {
-                                            changeCat(item);
-                                        }}
-                                        key={item}
-                                    >         
-                                    </li>
-                                ))}
+                                <li onClick={setJewelMode}>Jewelery</li>
+                                <li onClick={setElecMode}>Electronics</li>
+                                <li onClick={setMenMode}>Men's Clothing</li>
+                                <li onClick={setWomenMode}>Women's Clothing</li>
                             </ul>
                         </div>
                     </div>
