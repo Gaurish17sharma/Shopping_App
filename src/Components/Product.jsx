@@ -24,9 +24,16 @@ export default function Product({ products, setProduct, addToCart }) {
         const getCartsData = async function () {
             let response;
             try {
-                response = await fetch(
-                    `https://fakestoreapi.com/products`
-                );
+                if (aloo) {
+                    response = await fetch(
+                        `https://fakestoreapi.com/products`
+                    );
+                }
+                else {
+                    response = await fetch(
+                        `'https://fakestoreapi.com/products/category/jewelery`
+                    );
+                }
 
                 if (!response.ok) {
                     throw new Error("Error in fetching data");

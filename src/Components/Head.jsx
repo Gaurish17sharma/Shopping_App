@@ -39,31 +39,6 @@ export default function Head({ setToProductMode,
         setToAboutMode();
     };
 
-    useEffect(() => {
-        const getProductCategories = async function () {
-            let response;
-            try {
-                response = await fetch(
-                    `'https://fakestoreapi.com/products/category/jewelery`
-                );
-
-                if (!response.ok) {
-                    throw new Error("Error in fetching data");
-                }
-                let result = await response.json();
-                setProduct(result);
-                console.log(result);
-            }
-            catch (error) {
-                console.log("Error on fetching data");
-                setProduct(null);
-            }
-
-        };
-
-        getProductCategories();
-    }, []);
-
     return (
         <>
             <div className="header">
@@ -86,8 +61,7 @@ export default function Head({ setToProductMode,
                                             changeCat(item);
                                         }}
                                         key={item}
-                                    >
-                                        
+                                    >         
                                     </li>
                                 ))}
                             </ul>
