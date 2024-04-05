@@ -70,6 +70,13 @@
     max-height: 60px;
     width: auto;
   }
+
+  .logoIcon {
+    max-height: 60px;
+    width: auto;
+    border-radius: 10px;
+    margin-right: 10px;
+  }
   .menu {
     position: relative;
     display: inline-block;

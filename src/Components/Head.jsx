@@ -44,6 +44,7 @@ export default function Head({ setToProductMode,
     return (
         <>
             <div className="header">
+            <img className="logoIcon" src='7884399.jpg' alt="" />
                 <h1>Regale Shop Store </h1>
                 <ul className="navigation">
                     <li onClick={setHomeMode}>
