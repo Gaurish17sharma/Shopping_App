@@ -10,89 +10,72 @@
     padding: 0 30px;
     background-color: rgb(11, 17, 43);
   }
-
-
   .header h1 {
     font-size: 2em;
     flex: 1;
   }
-  
   .navigation {
     display: flex;
     justify-content: center;
     flex: 1;
     gap: 50px;
-  
   }
-  
   .navigation .active {
     border-bottom: 3px solid white;
   }
-  
   .navigation  {
     list-style: none;
-    text-decoration: none;
+    text-decoration: underline;
     font-size: 23px;
   }
-
   .navigation li:hover{
     cursor: pointer;
   }
-  
   .navigation li a {
     text-decoration: none;
     color: white;
   }
-
   .cart-bar {
     display: flex;
     flex: 1;
     justify-content: flex-end;
-  }
-  
+  } 
   .cart-bar {
     height: 100%;
   }
-  
   .cart-bar button {
     position: relative;
     background: transparent;
     border: none;
   }
-  
   .cart-bar button:hover {
     cursor: pointer;
   }
-
   .cart-quantity {
     position: absolute;
     color: black;
     background-color: rgb(239, 240, 243);
-    left: 85%;
-    top: 5%;
+    left: 90%;
+    top: 1%;
     transform: translate(-50%, -50%);
     padding: 5px 10px;
     border-radius: 100%;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
   }
-
   .cartIcon{
     height: fit-content;
   }
-
  .cartIcon {
     max-height: 60px;
     width: auto;
   }
-
   .menu {
     position: relative;
     display: inline-block;
-  
   }
-  
-  .dropdown-links {
+ 
+  .dropdown-menu {
     display: none;
     position: absolute;
     padding-bottom: 10px;
@@ -102,25 +85,31 @@
     z-index: 1;
   }
   
-  .dropdown-btn:hover {
-    cursor: pointer;
+  .dropdown-menu li{
+    display: block;
+    gap: 10px;
+    font-size: 25px;
+    margin-bottom: 10px;
+    text-align: center;
+    
   }
-  
-  .dropdown-links a {
-    color: white;
-    padding: 12px 16px;
-    margin: 0 10px;
-    text-decoration: none;
+
+  .dropdown-menu li {
+    text-decoration: underline;
+  }
+
+  .menu:hover .dropdown-menu {
     display: block;
   }
-  
-  .dropdown-links a.active {
-    border-bottom: 3px solid white;
+
+  .dropdown-menu ul{
+    padding-inline-start: 0px;
+    padding: 25px;
+    margin-top: 20px;
   }
-  
-  
-  .dropdown:hover .dropdown-links {
-    display: block;
+
+  .dropdown_btn{
+    background-color: rgba(28, 32, 44, 0.7);
+
   }
-  
   

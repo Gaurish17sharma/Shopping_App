@@ -1,6 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect} from 'react';
 import './Styling/Head.css';
-import DropdownMenu from './DropdownMenu';
 
 import { NavLink } from 'react-router-dom';
 
@@ -8,9 +7,11 @@ export default function Head({ setToProductMode,
     setToHomeMode,
     setToAboutMode,
     setToCartMode,
-    categories, 
+    categories,
     changeCat,
     cart,
+    products,
+    setProduct,
 }) {
     const [isDropdownVisible, setDropdownVisible] = useState(false);
 
@@ -38,6 +39,31 @@ export default function Head({ setToProductMode,
         setToAboutMode();
     };
 
+    useEffect(() => {
+        const getProductCategories = async function () {
+            let response;
+            try {
+                response = await fetch(
+                    `'https://fakestoreapi.com/products/category/jewelery`
+                );
+
+                if (!response.ok) {
+                    throw new Error("Error in fetching data");
+                }
+                let result = await response.json();
+                setProduct(result);
+                console.log(result);
+            }
+            catch (error) {
+                console.log("Error on fetching data");
+                setProduct(null);
+            }
+
+        };
+
+        getProductCategories();
+    }, []);
+
     return (
         <>
             <div className="header">
@@ -50,16 +76,22 @@ export default function Head({ setToProductMode,
                         Products
                     </li>
 
-                    <div
-                        className="menu"
-                        onMouseEnter={handleMouseEnter}
-                        onMouseLeave={handleMouseLeave}
-                    >
-                        <button className='dropdown-btn'>Categories</button>
-
-                        {isDropdownVisible &&
-                            (<DropdownMenu categories={categories}
-                                changeCategory={(val) => changeCat(val)} />)}
+                    <div className="menu">
+                        <li className='dropdown-btn'>Categories</li>
+                        <div className="dropdown-menu">
+                            <ul>
+                                {categories?.map((item) => (
+                                    <li
+                                        onClick={() => {
+                                            changeCat(item);
+                                        }}
+                                        key={item}
+                                    >
+                                        
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
                     </div>
 
                     <li onClick={setAboutMode}>
