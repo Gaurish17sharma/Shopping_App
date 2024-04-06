@@ -16,9 +16,9 @@
   }
   .navigation {
     display: flex;
-    justify-content: center;
     flex: 1;
-    gap: 50px;
+    gap: 30px;
+    margin-right: 40px;
   }
   .navigation .active {
     border-bottom: 3px solid white;
@@ -30,10 +30,6 @@
   }
   .navigation li:hover{
     cursor: pointer;
-  }
-  .navigation li a {
-    text-decoration: none;
-    color: white;
   }
   .cart-bar {
     display: flex;
@@ -80,12 +76,13 @@
   .menu {
     position: relative;
     display: inline-block;
+    text-align: center;
   }
  
   .dropdown-menu {
     display: none;
     position: absolute;
-    padding-bottom: 10px;
+    margin-right: 20px;
     border-radius: 10px;
     background-color: rgba(28, 32, 44, 0.7);
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
@@ -111,12 +108,11 @@
 
   .dropdown-menu ul{
     padding-inline-start: 0px;
-    padding: 25px;
-    margin-top: 20px;
+    padding: 20px;
+    margin-top: 10px;
   }
 
   .dropdown_btn{
     background-color: rgba(28, 32, 44, 0.7);
-
   }
   

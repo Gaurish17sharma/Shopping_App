@@ -16,6 +16,7 @@
     border: 1px solid black;
     border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 10px -2px 20px 2px rgb(0 0 0 / 30%);
     padding: 40px;
   }
   
@@ -96,7 +97,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    ;
   }
+  
   
   .empty-cart button {
     margin-top: 50px;
@@ -120,6 +123,7 @@
   .empty_cart {
     height: 100px;
     width: auto;
+    filter: invert(408%) sepia(113%) saturate(3507%) hue-rotate(1300deg) brightness(95%) contrast(80%);
   }
 
   .item_img{
