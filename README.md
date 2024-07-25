@@ -1,4 +1,4 @@
-#Shopping App
+# Shopping App
 ## | React, Javascript, CSS, Vite| 
 #### Built a comprehensive shopping cart system with add/remove item functionalities. 
 #### Implemented state method for navigation between different sections of the app .
